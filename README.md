@@ -39,3 +39,9 @@ Recently chrome disallowed to install packed `crx` extension that are not listed
 
 - On Firefox: enter `about:debugging#/runtime/this-firefox` into the address bar
 - In the Extension page find `conventional comments button` and hit the reload button
+
+## How to run it on a self-hosted instance
+
+- Open manifest.json
+- Add your domain to `permissions` and `content_scripts -> matches`
+- Open the browser and install or update the extension 
