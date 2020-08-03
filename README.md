@@ -44,4 +44,8 @@ Recently chrome disallowed to install packed `crx` extension that are not listed
 
 - Open manifest.json
 - Add your domain to `permissions` and `content_scripts -> matches`
-- Open the browser and install or update the extension 
+- Open the browser and install or update the extension
+
+## Credits
+
+This project bundles some of the icon coming from [font-awesome](https://fontawesome.com/) icons as SVG
