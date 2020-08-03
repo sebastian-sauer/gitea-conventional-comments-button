@@ -37,10 +37,15 @@
   outline: 0;
 }
 
+#conventionalCommentButtonContainer button svg {
+  height: 13px;
+  width: 13px;
+}
+
 #conventionalCommentButtonContainer button:focus {
   outline: 0;
 }
 
-#conventionalCommentButtonContainer button i.blocking {
+#conventionalCommentButtonContainer button.blocking {
   color: red;
 }
