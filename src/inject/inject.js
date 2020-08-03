@@ -1,35 +1,42 @@
 const semanticLabels = {
   praise: {
+    text: "praise",
     icon: "fa-trophy",
     blocking: false,
   },
   nitpick: {
+    text: "nitpick",
     icon: "fa-search",
     blocking: true,
   },
   suggestion: {
+    text: "suggestion",
     icon: "fa-exclamation",
     blocking: true,
   },
   issue: {
+    text: "issue",
     icon: "fa-bug",
     blocking: true,
   },
   question: {
+    text: "question",
     icon: "fa-question",
     blocking: true,
   },
   thought: {
+    text: "thought",
     icon: "fa-comment",
     blocking: false,
   },
   chore: {
+    text: "chore",
     icon: "fa-home",
     blocking: true,
   },
 };
 
-const semanticCommentStructure = `**%label%decoration:** <subject>`;
+const semanticCommentStructure = `**%text%decoration:** <subject>`;
 
 const fillTextAreaValue = (textarea, value, emptySubject = true) => {
   textarea.value = value;
@@ -46,7 +53,7 @@ const semanticButtonClickHandler = (e, { textarea, label, blocking }) => {
   e.preventDefault();
   const decoration = blocking ? "" : " (non-blocking)";
   const semanticComment = semanticCommentStructure
-    .replace("%label", label)
+    .replace("%text", semanticLabels[label].text)
     .replace("%decoration", decoration);
   const cleanedValue = textarea.value.replace(/\*\*\w+(\s\(non-blocking\))?:\*\*\s?/, '');
 
