@@ -81,10 +81,15 @@ const semanticButtonClickHandler = (e, { textarea, label, blocking }) => {
 
 const buttonGenerator = (textarea, parent, label, blocking) => {
   const button = document.createElement("button");
+  button.classList.add("has-tooltip")
+  button.setAttribute("data-title", semanticLabels[label].text);
   button.innerHTML = semanticLabels[label].icon;
+
   if (blocking) {
     button.classList.add("blocking");
+    button.setAttribute("data-title", `${semanticLabels[label].text} (blocking)`);
   }
+
   button.addEventListener("click", (e) =>
     semanticButtonClickHandler(e, { textarea, label, blocking })
   );
@@ -96,28 +101,28 @@ const buttonPairGenerator = (textarea, parent, label) => {
   buttonContainer.classList.add("buttonContainer");
   buttonGenerator(textarea, buttonContainer, label, false);
   if (semanticLabels[label].blocking) {
+    buttonContainer.classList.add("hasBlockingButton");
     buttonGenerator(textarea, buttonContainer, label, true);
   }
   parent.appendChild(buttonContainer);
 };
 
 const addSemanticButton = (element) => {
-  const parent = element.closest("div");
+  const parent = element.closest(".div-dropzone-wrapper").querySelector(".comment-toolbar");
   const container = document.createElement("div");
   container.id = "conventionalCommentButtonContainer";
 
   Object.keys(semanticLabels).forEach((label) => {
     buttonPairGenerator(element, container, label);
   });
-  parent.appendChild(container);
+  parent.classList.remove("clearfix");
+  parent.classList.add('has-conventional-comments-buttons');
+  parent.prepend(container);
 };
 
-document.addEventListener("click", (e) => {
-  if (
-    (e.target.id === "note_note" || e.target.id === "note-body") &&
-    !e.target.dataset.semanticButtonInitialized
-  ) {
-    e.target.dataset.semanticButtonInitialized = true;
-    addSemanticButton(e.target);
-  }
-});
+setInterval(function () {
+  document.querySelectorAll("#note_note:not([data-semantic-button-initialized]), #note-body:not([data-semantic-button-initialized])").forEach(function(note) {
+    note.dataset.semanticButtonInitialized = "true";
+    addSemanticButton(note);
+  });
+}, 1000);
