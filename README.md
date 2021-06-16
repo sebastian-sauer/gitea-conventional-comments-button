@@ -16,7 +16,7 @@ Recently chrome disallowed to install packed `crx` extension that are not listed
 
 - On Chrome: Menu
   - More Tools
-    - Extensions
+    - Extensions (be sure to have _Developer Mode_ enabled there)
 - In the Extension page: `Load unpacked` and select the cloned repository
 
 ### Firefox
