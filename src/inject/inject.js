@@ -77,17 +77,22 @@ const semanticButtonClickHandler = (e, { textarea, label, blocking }) => {
   } else {
     fillTextAreaValue(textarea, semanticComment);
   }
+
+  saveChanges(textarea);
 };
 
 const buttonGenerator = (textarea, parent, label, blocking) => {
   const button = document.createElement("button");
-  button.classList.add("has-tooltip")
+  button.classList.add("has-tooltip");
   button.setAttribute("data-title", semanticLabels[label].text);
   button.innerHTML = semanticLabels[label].icon;
 
   if (blocking) {
     button.classList.add("blocking");
-    button.setAttribute("data-title", `${semanticLabels[label].text} (blocking)`);
+    button.setAttribute(
+      "data-title",
+      `${semanticLabels[label].text} (blocking)`
+    );
   }
 
   button.addEventListener("click", (e) =>
@@ -108,7 +113,9 @@ const buttonPairGenerator = (textarea, parent, label) => {
 };
 
 const addSemanticButton = (element) => {
-  const parent = element.closest(".div-dropzone-wrapper").querySelector(".comment-toolbar");
+  const parent = element
+    .closest(".div-dropzone-wrapper")
+    .querySelector(".comment-toolbar");
   const container = document.createElement("div");
   container.id = "conventionalCommentButtonContainer";
 
@@ -116,13 +123,26 @@ const addSemanticButton = (element) => {
     buttonPairGenerator(element, container, label);
   });
   parent.classList.remove("clearfix");
-  parent.classList.add('has-conventional-comments-buttons');
+  parent.classList.add("has-conventional-comments-buttons");
   parent.prepend(container);
 };
 
-setInterval(function () {
-  document.querySelectorAll("#note_note:not([data-semantic-button-initialized]), #note-body:not([data-semantic-button-initialized])").forEach(function(note) {
-    note.dataset.semanticButtonInitialized = "true";
-    addSemanticButton(note);
+const saveChanges = (element) => {
+  var event = new Event("input", {
+    bubbles: true,
+    cancelable: true,
   });
+
+  element.dispatchEvent(event);
+};
+
+setInterval(function () {
+  document
+    .querySelectorAll(
+      "#note_note:not([data-semantic-button-initialized]), #note-body:not([data-semantic-button-initialized])"
+    )
+    .forEach(function (note) {
+      note.dataset.semanticButtonInitialized = "true";
+      addSemanticButton(note);
+    });
 }, 1000);
