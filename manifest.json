@@ -10,7 +10,10 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "options_page": "src/options.html",
+  "action": {},
+  "options_ui": {
+    "page": "src/options.html"
+  },
   "permissions": [
     "activeTab",
     "storage",

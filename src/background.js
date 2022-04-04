@@ -1,12 +1,11 @@
 const scriptId = "conventional-comments-button";
 const defaultHost = 'https://gitlab.com';
 
-async function registerContentScripts(hosts)
-{
-  hosts = hosts.split(',');
-  
+async function registerContentScripts(hosts) {
+  hosts = hosts.split('\n');
+
   for (var index in hosts) {
-    hosts[index] += "/*";
+    hosts[index] = hosts[index].trim() + "/*";
   }
 
   await chrome.scripting.registerContentScripts([{
@@ -18,7 +17,11 @@ async function registerContentScripts(hosts)
   }]);
 }
 
-chrome.storage.sync.get({hosts: defaultHost}, async function(result) {
+chrome.action.onClicked.addListener(() => {
+  chrome.runtime.openOptionsPage();
+})
+
+chrome.storage.sync.get({ hosts: defaultHost }, async function (result) {
   console.log('Hosts is currently ', result);
 
   var hosts = result.hosts;
@@ -29,10 +32,10 @@ chrome.storage.sync.get({hosts: defaultHost}, async function(result) {
 });
 
 chrome.storage.onChanged.addListener(async (changes, areaName) => {
-    if (changes['hosts']) {
-      await chrome.scripting.unregisterContentScripts({ids: [scriptId]});
-      console.log("Setting new hosts to " + changes['hosts']['newValue']);
-      await registerContentScripts(changes['hosts']['newValue']);
-    }
+  if (changes['hosts']) {
+    await chrome.scripting.unregisterContentScripts({ ids: [scriptId] });
+    console.log("Setting new hosts to " + changes['hosts']['newValue']);
+    await registerContentScripts(changes['hosts']['newValue']);
   }
+}
 )
