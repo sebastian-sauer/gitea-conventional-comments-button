@@ -139,7 +139,7 @@ const saveChanges = (element) => {
 setInterval(function () {
   document
     .querySelectorAll(
-      "#note_note:not([data-semantic-button-initialized]), #note-body:not([data-semantic-button-initialized])"
+      "#note_note:not([data-semantic-button-initialized]), #note-body:not([data-semantic-button-initialized]), #review-note-body:not([data-semantic-button-initialized])"
     )
     .forEach(function (note) {
       note.dataset.semanticButtonInitialized = "true";
