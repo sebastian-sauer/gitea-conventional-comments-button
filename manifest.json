@@ -1,6 +1,6 @@
 {
   "name": "Conventional comments button",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "An extension to quickly add conventional comments",
   "homepage_url": "https://conventionalcomments.org/",
