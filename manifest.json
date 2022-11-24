@@ -1,7 +1,7 @@
 {
   "name": "Conventional comments button",
-  "version": "0.0.2",
-  "manifest_version": 2,
+  "version": "0.0.3",
+  "manifest_version": 3,
   "description": "An extension to quickly add conventional comments",
   "homepage_url": "https://conventionalcomments.org/",
   "icons": {
@@ -10,7 +10,8 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "permissions": ["https://gitlab.com/*"],
+  "permissions": ["scripting"],
+  "host_permissions": ["https://gitlab.com/*"],
   "content_scripts": [
     {
       "matches": ["https://gitlab.com/*"],
