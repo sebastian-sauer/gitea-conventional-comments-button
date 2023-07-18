@@ -1,6 +1,12 @@
-# Conventional Comments button
+# Conventional Comments button for gitea
 
-This is a tiny extension that adds a conventional comment button to GitLab file explorer comments, allowing to quickly leave a structured semantic comment during your MR reviews!
+This is a tiny extension that adds a conventional comment button to gitea pull request comments, allowing to quickly leave a structured semantic comment during your PR reviews!
+
+## Attribution
+
+This project was forked from https://gitlab.com/conventionalcomments/conventional-comments-button to make it usable with gitea.
+
+Please see LICENSE file for the original license.
 
 ## Demo
 

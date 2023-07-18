@@ -1,5 +1,5 @@
 const scriptId = "conventional-comments-button";
-const defaultHost = 'https://gitlab.com';
+const defaultHost = 'https://gitea.com';
 
 async function registerContentScripts(hosts) {
   hosts = hosts.split('\n');
@@ -7,7 +7,6 @@ async function registerContentScripts(hosts) {
   for (var index in hosts) {
     hosts[index] = hosts[index].trim() + "/*";
   }
-
   await chrome.scripting.registerContentScripts([{
     id: scriptId,
     matches: hosts,

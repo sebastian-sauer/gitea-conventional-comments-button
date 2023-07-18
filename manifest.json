@@ -1,5 +1,5 @@
 {
-  "name": "Conventional comments button",
+  "name": "gitea conventional comments buttons",
   "version": "0.0.1",
   "manifest_version": 3,
   "description": "An extension to quickly add conventional comments",
