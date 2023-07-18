@@ -17,6 +17,11 @@
   "host_permissions": [
     "*://*/*"
   ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{caedf018-aaa8-4999-b196-cd29026bb558}"
+    }
+  },
   "content_scripts": [
     {
         "matches": ["*://*/*"],
