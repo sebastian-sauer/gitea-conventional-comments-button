@@ -9,42 +9,42 @@ const stickyNoteIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448
 
 const semanticLabels = {
   praise: {
-    text: "praise",
+    text: 'praise',
     icon: trophyIcon,
     blocking: false,
   },
   nitpick: {
-    text: "nitpick",
+    text: 'nitpick',
     icon: searchIcon,
     blocking: true,
   },
   suggestion: {
-    text: "suggestion",
+    text: 'suggestion',
     icon: exclamationIcon,
     blocking: true,
   },
   issue: {
-    text: "issue",
+    text: 'issue',
     icon: bugIcon,
     blocking: true,
   },
   question: {
-    text: "question",
+    text: 'question',
     icon: questionIcon,
     blocking: true,
   },
   thought: {
-    text: "thought",
+    text: 'thought',
     icon: commentIcon,
     blocking: false,
   },
   chore: {
-    text: "chore",
+    text: 'chore',
     icon: homeIcon,
     blocking: true,
   },
   note: {
-    text: "note",
+    text: 'note',
     icon: stickyNoteIcon,
     blocking: false,
   },
@@ -63,22 +63,22 @@ const fillTextAreaValue = (textarea, value, emptySubject = true) => {
   }
 };
 
-const semanticButtonClickHandler = (e, { textarea, label, blocking }) => {
+const semanticButtonClickHandler = (e, {textarea, label, blocking}) => {
   e.preventDefault();
-  const decoration = blocking ? "" : " (non-blocking)";
+  const decoration = blocking ? '' : ' (non-blocking)';
   const semanticComment = semanticCommentStructure
-    .replace("%text", semanticLabels[label].text)
-    .replace("%decoration", decoration);
+      .replace('%text', semanticLabels[label].text)
+      .replace('%decoration', decoration);
   const cleanedValue = textarea.value.replace(
-    /\*\*\w+(\s\(non-blocking\))?:\*\*\s?/,
-    ""
+      /\*\*\w+(\s\(non-blocking\))?:\*\*\s?/,
+      '',
   );
 
-  if (cleanedValue && cleanedValue !== "<subject>") {
+  if (cleanedValue && cleanedValue !== '<subject>') {
     fillTextAreaValue(
-      textarea,
-      semanticComment.replace(":** <subject>", `:** ${cleanedValue}`),
-      false
+        textarea,
+        semanticComment.replace(':** <subject>', `:** ${cleanedValue}`),
+        false,
     );
   } else {
     fillTextAreaValue(textarea, semanticComment);
@@ -88,51 +88,52 @@ const semanticButtonClickHandler = (e, { textarea, label, blocking }) => {
 };
 
 const buttonGenerator = (textarea, parent, label, blocking) => {
-  const button = document.createElement("button");
-  button.setAttribute("data-tooltip-content", semanticLabels[label].text);
+  const button = document.createElement('button');
+  button.setAttribute('data-tooltip-content', semanticLabels[label].text);
   button.innerHTML = semanticLabels[label].icon;
 
   if (blocking) {
-    button.classList.add("blocking");
+    button.classList.add('blocking');
     button.setAttribute(
-      "data-tooltip-content",
-      `${semanticLabels[label].text} (blocking)`
+        'data-tooltip-content',
+        `${semanticLabels[label].text} (blocking)`,
     );
   }
 
-  button.addEventListener("click", (e) =>
-    semanticButtonClickHandler(e, { textarea, label, blocking })
+  button.addEventListener('click', (e) =>
+    semanticButtonClickHandler(e, {textarea, label, blocking}),
   );
   parent.appendChild(button);
 };
 
 const buttonPairGenerator = (textarea, parent, label) => {
-  const buttonContainer = document.createElement("div");
-  buttonContainer.classList.add("buttonContainer");
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('buttonContainer');
   buttonGenerator(textarea, buttonContainer, label, false);
   if (semanticLabels[label].blocking) {
-    buttonContainer.classList.add("hasBlockingButton");
+    buttonContainer.classList.add('hasBlockingButton');
     buttonGenerator(textarea, buttonContainer, label, true);
   }
   parent.appendChild(buttonContainer);
 };
 
-const addSemanticButton = (element) => {
-  const parent = element.querySelector('.field.footer');
-  const container = document.createElement("div");
-  container.id = "conventionalCommentButtonContainer";
-  container.classList.add("ui");
-  container.classList.add("left");
+const addSemanticButton = (elem) => {
+  const parent = elem.querySelector('.field.footer');
+  const container = document.createElement('div');
+  container.id = 'conventionalCommentButtonContainer';
+  container.classList.add('ui');
+  container.classList.add('left');
   Object.keys(semanticLabels).forEach((label) => {
-    buttonPairGenerator(element.querySelector('textarea.markdown-text-editor'), container, label);
+    const markdownEditor = elem.querySelector('textarea.markdown-text-editor');
+    buttonPairGenerator(markdownEditor, container, label);
   });
-  parent.classList.remove("clearfix");
-  parent.classList.add("has-conventional-comments-buttons");
+  parent.classList.remove('clearfix');
+  parent.classList.add('has-conventional-comments-buttons');
   parent.prepend(container);
 };
 
 const saveChanges = (element) => {
-  var event = new Event("input", {
+  const event = new Event('input', {
     bubbles: true,
     cancelable: true,
   });
@@ -142,16 +143,17 @@ const saveChanges = (element) => {
 
 // Only add the interval if we're on the files diff page
 // (as on all other pages there is no need for conventional comments)
-if(document.querySelector('.page-content.repository.view.issue.pull.files.diff')) {
-  setInterval(function () {
+const selector = '.page-content.repository.view.issue.pull.files.diff';
+if (document.querySelector(selector)) {
+  setInterval(function() {
     document
-      .querySelectorAll(
-        ".field.comment-code-cloud:not([data-semantic-button-initialized])"
-      )
-      .forEach(function (note) {
-        note.dataset.semanticButtonInitialized = "true";
-        note.querySelector('.markup-info').remove();
-        addSemanticButton(note);
-      });
+        .querySelectorAll(
+            '.field.comment-code-cloud:not([data-semantic-button-initialized])',
+        )
+        .forEach(function(note) {
+          note.dataset.semanticButtonInitialized = 'true';
+          note.querySelector('.markup-info').remove();
+          addSemanticButton(note);
+        });
   }, 1000);
-} 
+}

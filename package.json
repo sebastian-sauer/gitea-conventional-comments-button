@@ -1,0 +1,30 @@
+{
+  "name": "gitea-conventional-comments-button",
+  "version": "0.0.1",
+  "description": "An extension to quickly add conventional comments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.js",
+    "lint_fix": "eslint --fix src/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-sauer/gitea-conventional-comments-button.git"
+  },
+  "keywords": [
+    "extension",
+    "gitea",
+    "conventional-comments"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sebastian-sauer/gitea-conventional-comments-button/issues"
+  },
+  "homepage": "https://github.com/sebastian-sauer/gitea-conventional-comments-button#readme",
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
