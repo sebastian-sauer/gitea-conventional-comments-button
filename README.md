@@ -8,7 +8,7 @@ This project was forked from https://gitlab.com/conventionalcomments/conventiona
 
 Please see LICENSE file for the original license.
 
-## Demo (needs an update for gitea)
+## Demo
 
 ![Demo](demo.gif)
 
