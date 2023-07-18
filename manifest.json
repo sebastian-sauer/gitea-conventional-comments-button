@@ -1,6 +1,6 @@
 {
   "name": "gitea conventional comments buttons",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 3,
   "description": "An extension to quickly add conventional comments",
   "homepage_url": "https://conventionalcomments.org/",
@@ -11,18 +11,18 @@
   },
   "default_locale": "en",
   "action": {},
-  "options_ui": {
-    "page": "src/options.html"
-  },
   "permissions": [
-    "activeTab",
-    "storage",
     "scripting"
   ],
   "host_permissions": [
-    "*://*/"
+    "*://*/*"
   ],
-  "background": {
-    "service_worker": "src/background.js"
-  }
+  "content_scripts": [
+    {
+        "matches": ["*://*/*"],
+        "js": ["src/inject/inject.js"],
+        "css": ["src/inject/inject.css"],
+        "runAt": "document_idle"
+    }
+  ]
 }
