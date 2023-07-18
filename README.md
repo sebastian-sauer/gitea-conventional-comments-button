@@ -8,13 +8,13 @@ This project was forked from https://gitlab.com/conventionalcomments/conventiona
 
 Please see LICENSE file for the original license.
 
-## Demo
+## Demo (needs an update for gitea)
 
 ![Demo](demo.gif)
 
 ## How to install
 
-First, clone this repo `git clone git@gitlab.com:conventionalcomments/conventional-comments-button.git` and then see below for browser specific instructions.
+First, clone this repo `git clone https://github.com/sebastian-sauer/gitea-conventional-comments-button` and then see below for browser specific instructions.
 
 ### Chrome
 
