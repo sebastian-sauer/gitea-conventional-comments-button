@@ -144,16 +144,17 @@ const saveChanges = (element) => {
 // Only add the interval if we're on the files diff page
 // (as on all other pages there is no need for conventional comments)
 const selector = '.page-content.repository.view.issue.pull.files.diff';
-if (document.querySelector(selector)) {
-  setInterval(function() {
-    document
-        .querySelectorAll(
-            '.field.comment-code-cloud:not([data-semantic-button-initialized])',
-        )
-        .forEach(function(note) {
-          note.dataset.semanticButtonInitialized = 'true';
-          note.querySelector('.markup-info').remove();
-          addSemanticButton(note);
-        });
-  }, 1000);
+if (document.querySelector(selector) && editorTemplate) {
+  const templ = document.querySelector('#issue-comment-editor-template');
+  if (templ) {
+    setInterval(function() {
+      document
+          .querySelectorAll(`.field.comment-code-cloud:not([data-semantic-button-initialized])`)
+          .forEach(function(note) {
+            note.dataset.semanticButtonInitialized = 'true';
+            note.querySelector('.markup-info').remove();
+            addSemanticButton(note);
+          });
+    }, 1000);
+  }
 }
