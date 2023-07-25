@@ -48,12 +48,6 @@ Recently chrome disallowed to install packed `crx` extension that are not listed
 - On Firefox: enter `about:debugging#/runtime/this-firefox` into the address bar
 - In the Extension page find `conventional comments button` and hit the reload button
 
-## How to enable it on a self-hosted instance
-
-- Open the extension options
-- Add your domain as a new line in the "Enabled Hosts" field
-- Click Save
-
 ## Credits
 
 This project bundles some of the icon coming from [font-awesome](https://fontawesome.com/) icons as SVG
