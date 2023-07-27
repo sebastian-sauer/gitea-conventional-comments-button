@@ -1,14 +1,8 @@
 # Conventional Comments button for gitea
 
-This is a tiny extension that adds a conventional comment button to gitea pull request comments, allowing to quickly leave a structured semantic comment during your PR reviews!
+This is a tiny extension that adds conventional comment buttons to gitea pull request comments, allowing to quickly leave a structured semantic comment during your PR reviews in [gitea](https://gitea.io)!
 
-This extension only works with gitea versions >= 1.20.
-
-## Attribution
-
-This project was forked from https://gitlab.com/conventionalcomments/conventional-comments-button to make it usable with gitea.
-
-Please see LICENSE file for the original license.
+For more information on conventional comments please see [the conventional comments homepage](https://conventionalcomments.org/).
 
 ## Demo
 
@@ -48,6 +42,14 @@ Recently chrome disallowed to install packed `crx` extension that are not listed
 - On Firefox: enter `about:debugging#/runtime/this-firefox` into the address bar
 - In the Extension page find `conventional comments button` and hit the reload button
 
-## Credits
+## Supported gitea versions
+
+This extension only works with gitea versions >= 1.20.
+
+## Credits & Attribution
+
+This project was forked from [https://gitlab.com/conventionalcomments/conventional-comments-button](https://gitlab.com/conventionalcomments/conventional-comments-button) to make it usable with gitea.
+
+Please see LICENSE file for the original license.
 
 This project bundles some of the icon coming from [font-awesome](https://fontawesome.com/) icons as SVG
