@@ -14,47 +14,47 @@ const featherIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 51
 
 const semanticLabels = {
   praise: {
-    text: 'praise',
+    text: '🏆 praise',
     icon: trophyIcon,
     blocking: false,
   },
   nitpick: {
-    text: 'nitpick',
+    text: '🔎 nitpick',
     icon: searchIcon,
     blocking: true,
   },
   suggestion: {
-    text: 'suggestion',
+    text: '⁉ suggestion',
     icon: exclamationIcon,
     blocking: true,
   },
   issue: {
-    text: 'issue',
+    text: '🪲 issue',
     icon: bugIcon,
     blocking: true,
   },
   question: {
-    text: 'question',
+    text: '❓question',
     icon: questionIcon,
     blocking: true,
   },
   thought: {
-    text: 'thought',
+    text: '💬 thought',
     icon: commentIcon,
     blocking: false,
   },
   chore: {
-    text: 'chore',
+    text: '🏠 chore',
     icon: homeIcon,
     blocking: true,
   },
   note: {
-    text: 'note',
+    text: '📝 note',
     icon: stickyNoteIcon,
     blocking: false,
   },
   typo: {
-    text: 'typo',
+    text: '🪶 typo',
     icon: featherIcon,
     blocking: false,
   },
@@ -80,7 +80,7 @@ const semanticButtonClickHandler = (e, {textarea, label, blocking}) => {
       .replace('%text', semanticLabels[label].text)
       .replace('%decoration', decoration);
   const cleanedValue = textarea.value.replace(
-      /\*\*\w+(\s\(non-blocking\))?:\*\*\s?/,
+      /\*\*.+(\s\(non-blocking\))?:\*\*\s?/,
       '',
   );
 
