@@ -13,11 +13,8 @@
   transition: all 0.3s;
 }
 
-#conventionalCommentButtonContainer .buttonContainer.hasBlockingButton:hover {
-  width: 50px;
-}
-
-#conventionalCommentButtonContainer .buttonContainer.hasBlockingButton:focus {
+#conventionalCommentButtonContainer .buttonContainer.hasBlockingButton:hover,
+#conventionalCommentButtonContainer .buttonContainer.hasBlockingButton:has(button:focus) {
   width: 50px;
 }
 
@@ -35,10 +32,7 @@
   width: 13px;
 }
 
-#conventionalCommentButtonContainer button:hover {
-  color: var(--color-primary-hover);
-}
-
+#conventionalCommentButtonContainer button:hover,
 #conventionalCommentButtonContainer button:focus {
   outline: 0;
   color: var(--color-primary-hover);
@@ -48,6 +42,7 @@
   color: var(--color-red-badge);
 }
 
-#conventionalCommentButtonContainer button.blocking:hover {
+#conventionalCommentButtonContainer button.blocking:hover,
+#conventionalCommentButtonContainer button.blocking:focus {
   color: var(--color-red-badge-hover-bg);
 }
