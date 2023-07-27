@@ -53,6 +53,11 @@ const semanticLabels = {
     icon: stickyNoteIcon,
     blocking: false,
   },
+  typo: {
+    text: 'typo',
+    icon: featherIcon,
+    blocking: false,
+  },
 };
 
 const semanticCommentStructure = `**%text%decoration:** <subject>`;
