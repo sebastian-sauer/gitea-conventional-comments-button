@@ -15,46 +15,55 @@ const semanticLabels = {
     text: '🏆 praise',
     icon: trophyIcon,
     blocking: false,
+    description: `s highlight something positive. Try to leave at least one of these comments per review. Do not leave false praise (which can actually be damaging). Do look for something to sincerely praise.`,
   },
   nitpick: {
     text: '🔎 nitpick',
     icon: searchIcon,
-    blocking: true,
+    blocking: false,
+    description: `s are trivial preference-based requests. These should be non-blocking by nature.`,
   },
   suggestion: {
     text: '⁉ suggestion',
     icon: exclamationIcon,
     blocking: true,
+    description: `s propose improvements to the current subject. It's important to be explicit and clear on what is being suggested and why it is an improvement. Consider using patches and the blocking or non-blocking decorations to further communicate your intent.`,
   },
   issue: {
     text: '🪲 issue',
     icon: bugIcon,
     blocking: true,
+    description: `s highlight specific problems with the subject under review. These problems can be user-facing or behind the scenes. It is strongly recommended to pair this comment with a suggestion. If you are not sure if a problem exists or not, consider leaving a question.`,
   },
   question: {
     text: '❓question',
     icon: questionIcon,
     blocking: true,
+    description: `s are appropriate if you have a potential concern but are not quite sure if it's relevant or not. Asking the author for clarification or investigation can lead to a quick resolution.`,
   },
   thought: {
     text: '💬 thought',
     icon: commentIcon,
     blocking: false,
+    description: `s represent an idea that popped up from reviewing. These comments are non-blocking by nature, but they are extremely valuable and can lead to more focused initiatives and mentoring opportunities.`,
   },
   chore: {
     text: '🏠 chore',
     icon: homeIcon,
     blocking: true,
+    description: `s are simple tasks that must be done before the subject can be “officially” accepted. Usually, these comments reference some common process. Try to leave a link to the process description so that the reader knows how to resolve the chore.`,
   },
   note: {
     text: '📝 note',
     icon: stickyNoteIcon,
     blocking: false,
+    description: `s are always non-blocking and simply highlight something the reader should take note of.`,
   },
   typo: {
     text: '🪶 typo',
     icon: featherIcon,
     blocking: false,
+    description: ` comments are like todo:, where the main issue is a mispelling.`,
   },
 };
 
@@ -97,14 +106,15 @@ const semanticButtonClickHandler = (e, {textarea, label, blocking}) => {
 
 const buttonGenerator = (textarea, parent, label, blocking) => {
   const button = document.createElement('button');
-  button.setAttribute('data-tooltip-content', semanticLabels[label].text);
-  button.innerHTML = semanticLabels[label].icon;
+  const semLabel = semanticLabels[label];
+  button.setAttribute('data-tooltip-content', semLabel.text + semLabel.description);
+  button.innerHTML = semLabel.icon;
 
   if (blocking) {
     button.classList.add('blocking');
     button.setAttribute(
         'data-tooltip-content',
-        `${semanticLabels[label].text} (blocking)`,
+        `(blocking) ${semLabel.text}${semLabel.description}`,
     );
   }
 
