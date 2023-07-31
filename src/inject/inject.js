@@ -108,7 +108,9 @@ const buttonGenerator = (textarea, parent, label, blocking) => {
   const button = document.createElement('button');
   const semLabel = semanticLabels[label];
   button.setAttribute('data-tooltip-content', semLabel.text + semLabel.description);
-  button.innerHTML = semLabel.icon;
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(semLabel.icon, 'image/svg+xml');
+  button.appendChild(doc.children[0]);
 
   if (blocking) {
     button.classList.add('blocking');
