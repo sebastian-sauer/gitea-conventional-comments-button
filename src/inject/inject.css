@@ -13,8 +13,8 @@
   transition: all 0.3s;
 }
 
-#conventionalCommentButtonContainer .buttonContainer.hasBlockingButton:hover,
-#conventionalCommentButtonContainer .buttonContainer.hasBlockingButton:has(button:focus) {
+#conventionalCommentButtonContainer div.buttonContainer.hasBlockingButton:hover,
+#conventionalCommentButtonContainer div.buttonContainer.hasBlockingButton:has(button:focus) {
   width: 50px;
 }
 
