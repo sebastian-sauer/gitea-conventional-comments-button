@@ -13,7 +13,10 @@
   transition: all 0.3s;
 }
 
-#conventionalCommentButtonContainer div.buttonContainer.hasBlockingButton:hover,
+#conventionalCommentButtonContainer div.buttonContainer.hasBlockingButton:hover {
+  width: 50px;
+}
+
 #conventionalCommentButtonContainer div.buttonContainer.hasBlockingButton:has(button:focus) {
   width: 50px;
 }
@@ -32,7 +35,11 @@
   width: 13px;
 }
 
-#conventionalCommentButtonContainer button:hover,
+#conventionalCommentButtonContainer button:hover {
+  outline: 0;
+  color: var(--color-primary-hover);
+}
+
 #conventionalCommentButtonContainer button:focus {
   outline: 0;
   color: var(--color-primary-hover);
@@ -42,7 +49,10 @@
   color: var(--color-red-badge);
 }
 
-#conventionalCommentButtonContainer button.blocking:hover,
+#conventionalCommentButtonContainer button.blocking:hover {
+  color: var(--color-red-badge-hover-bg);
+}
+
 #conventionalCommentButtonContainer button.blocking:focus {
   color: var(--color-red-badge-hover-bg);
 }
