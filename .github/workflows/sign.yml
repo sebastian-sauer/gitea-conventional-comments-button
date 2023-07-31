@@ -1,0 +1,25 @@
+name: Sign
+
+on:
+  push:
+    tags:        
+      - '*'           # Push events to every tag not containing /
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - run: npm install
+    - run: npm run lint
+    - run: npm run sign:ff
+      env:
+        WEB_EXT_API_KEY: ${{ secrets.JWT_ISSUER }}
+        WEB_EXT_API_SECRET: ${{ secrets.JWT_SECRET }}
+
+
+
