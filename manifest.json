@@ -1,6 +1,6 @@
 {
   "name": "gitea conventional comments buttons",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "manifest_version": 3,
   "description": "__MSG_description__",
   "homepage_url": "https://github.com/sebastian-sauer/gitea-conventional-comments-button",
