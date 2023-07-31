@@ -4,7 +4,7 @@
   "description": "An extension to quickly add conventional comments",
   "main": "index.js",
   "scripts": {
-    "build:ff": "web-ext build --ignore-files *.gif",
+    "build:ff": "web-ext build --ignore-files *.gif --overwrite-dest",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.js && web-ext lint",
     "lint_fix": "eslint --fix src/**/*.js"
