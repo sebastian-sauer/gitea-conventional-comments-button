@@ -10,60 +10,44 @@ const stickyNoteIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448
 const featherIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path  fill="currentColor" d="M278.5 215.6L23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41c11.1-7.2 5.5-23-7.8-23c-5.1 0-9.2-4.1-9.2-9.2c0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3l-32.2 0c-5.1 0-9.2-4.1-9.2-9.2c0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7C506.4 207.6 512 184.1 512 160c0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149C91 197 64 262.1 64 330v55.3L253.6 195.8c6.2-6.2 16.4-6.2 22.6 0c5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>`;
 /** End of font awesome icons */
 
+const browser = window.browser ?? window.chrome;
+
 const semanticLabels = {
   praise: {
-    text: '🏆 praise',
     icon: trophyIcon,
     blocking: false,
-    description: `s highlight something positive. Try to leave at least one of these comments per review. Do not leave false praise (which can actually be damaging). Do look for something to sincerely praise.`,
   },
   nitpick: {
-    text: '🔎 nitpick',
     icon: searchIcon,
     blocking: false,
-    description: `s are trivial preference-based requests. These should be non-blocking by nature.`,
   },
   suggestion: {
-    text: '⁉ suggestion',
     icon: exclamationIcon,
     blocking: true,
-    description: `s propose improvements to the current subject. It's important to be explicit and clear on what is being suggested and why it is an improvement. Consider using patches and the blocking or non-blocking decorations to further communicate your intent.`,
   },
   issue: {
-    text: '🪲 issue',
     icon: bugIcon,
     blocking: true,
-    description: `s highlight specific problems with the subject under review. These problems can be user-facing or behind the scenes. It is strongly recommended to pair this comment with a suggestion. If you are not sure if a problem exists or not, consider leaving a question.`,
   },
   question: {
-    text: '❓question',
     icon: questionIcon,
     blocking: true,
-    description: `s are appropriate if you have a potential concern but are not quite sure if it's relevant or not. Asking the author for clarification or investigation can lead to a quick resolution.`,
   },
   thought: {
-    text: '💬 thought',
     icon: commentIcon,
     blocking: false,
-    description: `s represent an idea that popped up from reviewing. These comments are non-blocking by nature, but they are extremely valuable and can lead to more focused initiatives and mentoring opportunities.`,
   },
   chore: {
-    text: '🏠 chore',
     icon: homeIcon,
     blocking: true,
-    description: `s are simple tasks that must be done before the subject can be “officially” accepted. Usually, these comments reference some common process. Try to leave a link to the process description so that the reader knows how to resolve the chore.`,
   },
   note: {
-    text: '📝 note',
     icon: stickyNoteIcon,
     blocking: false,
-    description: `s are always non-blocking and simply highlight something the reader should take note of.`,
   },
   typo: {
-    text: '🪶 typo',
     icon: featherIcon,
     blocking: false,
-    description: ` comments are like todo:, where the main issue is a mispelling.`,
   },
 };
 
@@ -82,10 +66,9 @@ const fillTextAreaValue = (textarea, value, emptySubject = true) => {
 
 const semanticButtonClickHandler = (e, {textarea, label, blocking}) => {
   e.preventDefault();
-  const decoration = blocking ? '' : ' (non-blocking)';
   const semanticComment = semanticCommentStructure
-      .replace('%text', semanticLabels[label].text)
-      .replace('%decoration', decoration);
+      .replace('%text', browser.i18n.getMessage(label))
+      .replace('%decoration', (blocking ? '' : ' (non-blocking)'));
   const cleanedValue = textarea.value.replace(
       /\*\*.+(\s\(non-blocking\))?:\*\*\s?/,
       '',
@@ -107,7 +90,9 @@ const semanticButtonClickHandler = (e, {textarea, label, blocking}) => {
 const buttonGenerator = (textarea, parent, label, blocking) => {
   const button = document.createElement('button');
   const semLabel = semanticLabels[label];
-  button.setAttribute('data-tooltip-content', semLabel.text + semLabel.description);
+  const name = browser.i18n.getMessage(label);
+  const description = browser.i18n.getMessage(label+'Description', name);
+  button.setAttribute('data-tooltip-content', description);
   const parser = new DOMParser();
   const doc = parser.parseFromString(semLabel.icon, 'image/svg+xml');
   button.appendChild(doc.children[0]);
@@ -116,7 +101,7 @@ const buttonGenerator = (textarea, parent, label, blocking) => {
     button.classList.add('blocking');
     button.setAttribute(
         'data-tooltip-content',
-        `(blocking) ${semLabel.text}${semLabel.description}`,
+        `(blocking) ${description}`,
     );
   }
 

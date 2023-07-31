@@ -1,1 +1,115 @@
-{}
+{
+    "description": {
+        "message": "An extension to quickly add conventional comments to gitea PR comments."
+    },
+    "blocking": {"message": ""},
+    "nonBlocking": {"message": " (non-blocking)"},
+    "praise": {
+        "message": "🏆 praise"
+    },
+    "praiseDescription": {
+        "message": "$label$s highlight something positive. Try to leave at least one of these comments per review. Do not leave false praise (which can actually be damaging). Do look for something to sincerely praise.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "praise"
+            }
+        }
+    },
+    "nitpick": {
+        "message": "🔎 nitpick"
+    },
+    "nitpickDescription": {
+        "message": "$label$s are trivial preference-based requests. These should be non-blocking by nature.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "nitpick"
+            }
+        }
+    },
+    "suggestion": {
+        "message": "❗ suggestion"
+    },
+    "suggestionDescription": {
+        "message": "$label$s propose improvements to the current subject. It's important to be explicit and clear on what is being suggested and why it is an improvement. Consider using patches and the blocking or non-blocking decorations to further communicate your intent.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "suggestion"
+            }
+        }
+    },
+    "issue": {
+        "message": "🪲 issue"
+    },
+    "issueDescription": {
+        "message": "$label$s highlight specific problems with the subject under review. These problems can be user-facing or behind the scenes. It is strongly recommended to pair this comment with a suggestion. If you are not sure if a problem exists or not, consider leaving a question.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "issue"
+            }
+        }
+    },
+    "question": {
+        "message": "❓question"
+    },
+    "questionDescription": {
+        "message": "$label$s are appropriate if you have a potential concern but are not quite sure if it's relevant or not. Asking the author for clarification or investigation can lead to a quick resolution.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "question"
+            }
+        }
+    },
+    "thought": {
+        "message": "💬 thought"
+    },
+    "thoughtDescription": {
+        "message": "$label$s represent an idea that popped up from reviewing. These comments are non-blocking by nature, but they are extremely valuable and can lead to more focused initiatives and mentoring opportunities.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "thought"
+            }
+        }
+    },
+    "chore": {
+        "message": "🏠 chore"
+    },
+    "choreDescription": {
+        "message": "$label$s are simple tasks that must be done before the subject can be “officially” accepted. Usually, these comments reference some common process. Try to leave a link to the process description so that the reader knows how to resolve the chore.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "chore"
+            }
+        }
+    },
+    "note": {
+        "message": "📝 note"
+    },
+    "noteDescription": {
+        "message": "$label$s are always non-blocking and simply highlight something the reader should take note of.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "note"
+            }
+        }
+    },
+    "typo": {
+        "message": "🪶 typo"
+    },
+    "typoDescription": {
+        "message": "$label$ comments are like todo:, where the main issue is a mispelling.",
+        "placeholders": {
+            "label": {
+                "content": "$1",
+                "example": "typo"
+            }
+        }
+    }
+}
