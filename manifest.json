@@ -2,7 +2,7 @@
   "name": "gitea conventional comments buttons",
   "version": "0.0.2",
   "manifest_version": 3,
-  "description": "An extension to quickly add conventional comments",
+  "description": "An extension to quickly add conventional comments to gitea PR comments",
   "homepage_url": "https://conventionalcomments.org/",
   "icons": {
     "16": "icons/icon16.png",
