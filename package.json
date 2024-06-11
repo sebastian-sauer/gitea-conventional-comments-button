@@ -28,6 +28,6 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "eslint-config-google": "^0.14.0",
-    "web-ext": "^7.11.0"
+    "web-ext": "^8.1.0"
   }
 }
