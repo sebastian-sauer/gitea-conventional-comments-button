@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/sebastian-sauer/gitea-conventional-comments-button#readme",
   "devDependencies": {
-    "eslint": "^8.57.0",
+    "eslint": "^9.11.1",
     "eslint-config-google": "^0.14.0",
     "web-ext": "^8.3.0"
   }
