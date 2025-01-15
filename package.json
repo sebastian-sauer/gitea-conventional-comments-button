@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:ff": "web-ext build --ignore-files *.gif --overwrite-dest",
-    "sign:ff": "web-ext sign",
+    "sign:ff": "web-ext sign --channel unlisted",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.js && web-ext lint",
     "lint_fix": "eslint --fix src/**/*.js"
