@@ -124,13 +124,10 @@ const addSemanticButton = (elem) => {
   const parent = elem.querySelector('.field.footer');
   const container = document.createElement('div');
   container.id = 'conventionalCommentButtonContainer';
-  container.classList.add('ui');
-  container.classList.add('left');
   Object.keys(semanticLabels).forEach((label) => {
     const markdownEditor = elem.querySelector('textarea.markdown-text-editor');
     buttonPairGenerator(markdownEditor, container, label);
   });
-  parent.classList.remove('clearfix');
   parent.classList.add('has-conventional-comments-buttons');
   parent.prepend(container);
 };
