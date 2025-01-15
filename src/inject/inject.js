@@ -153,7 +153,7 @@ if (document.querySelector(selector) && document.querySelector('#issue-comment-e
         .querySelectorAll(`.field.comment-code-cloud:not([data-semantic-button-initialized])`)
         .forEach(function(note) {
           note.dataset.semanticButtonInitialized = 'true';
-          note.querySelector('.markup-info').remove();
+          note.querySelector('.markup-info')?.remove();
           addSemanticButton(note);
         });
   }, 1000);
