@@ -44,12 +44,12 @@ Recently chrome disallowed to install packed `crx` extension that are not listed
 
 ## Supported gitea versions
 
-This extension only works with gitea versions >= 1.20.
+This extension only works with gitea versions >= 1.23.
 
 ## Credits & Attribution
 
 This project was forked from [https://gitlab.com/conventionalcomments/conventional-comments-button](https://gitlab.com/conventionalcomments/conventional-comments-button) to make it usable with gitea.
 
-Please see LICENSE file for the original license.
+Please see the LICENSE file for the original license.
 
-This project bundles some of the icon coming from [font-awesome](https://fontawesome.com/) icons as SVG
+This project bundles some icons from [font-awesome](https://fontawesome.com/) as SVG.
