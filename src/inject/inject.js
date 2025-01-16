@@ -120,8 +120,11 @@ const buttonPairGenerator = (textarea, parent, label) => {
   parent.appendChild(buttonContainer);
 };
 
+/**
+ * @param {HTMLElement} elem 
+ */
 const addSemanticButton = (elem) => {
-  const parent = elem.querySelector('.field.footer');
+  const parent = elem.querySelector('.combo-markdown-editor.custom-init').parentElement;
   const container = document.createElement('div');
   container.id = 'conventionalCommentButtonContainer';
   Object.keys(semanticLabels).forEach((label) => {
@@ -129,7 +132,7 @@ const addSemanticButton = (elem) => {
     buttonPairGenerator(markdownEditor, container, label);
   });
   parent.classList.add('has-conventional-comments-buttons');
-  parent.prepend(container);
+  parent.insertAdjacentElement('afterend', container);
 };
 
 const saveChanges = (element) => {
